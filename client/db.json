@@ -1,0 +1,129 @@
+{
+	"subjects": [
+		{
+			"id": 1,
+			"title": "Criminology",
+			"courses": [
+				{
+					"id": 1,
+					"title": "Introduction to Criminology",
+					"shortcode": "Crim 101",
+					"department": "Criminology",
+					"credits": 3,
+					"course_director": "Dr.Proffessorsson",
+					"available": true,
+					"description": "This is a very good criminology course. This is a very good criminology course.This is a very good criminology course.",
+					"sections": [
+						{
+							"id": 1,
+							"code": "A1",
+							"time": "Monday 8-10pm",
+							"professor": "Dr.Nobody",
+							"location": "Vari Hall A"
+						},
+						{
+							"id": 2,
+							"code": "A5",
+							"time": "Monday 1-3pm",
+							"professor": "Dr.Bob",
+							"location": "Vari Hall B"
+						},
+						{
+							"id": 3,
+							"code": "A6",
+							"time": "Monday 4-6pm",
+							"professor": "Dr.Bobie",
+							"location": "Vari Hall C"
+						}
+					]
+				},
+				{
+					"id": 2,
+					"title": "Intermediate Criminology",
+					"shortcode": "Crim 102",
+					"department": "Criminology",
+					"available": true,
+					"credits": 3,
+					"course_director": "Dr.Proffessorsson",
+					"description": "This is a very good criminology course. This is a very good criminology course.",
+					"sections": [
+						{
+							"id": 2,
+							"code": "A3",
+							"time": "Tuesday 8-10pm",
+							"professor": "Dr.Boob",
+							"location": "Vari Hall A"
+						}
+					]
+				},
+				{
+					"id": 3,
+					"title": "Advanced Criminology",
+					"shortcode": "Crim 103",
+					"department": "Criminology",
+					"available": false,
+					"credits": 3,
+					"course_director": "Dr.Proffessorsson",
+					"description": "This is a very good criminology course. This is a very good criminology course.",
+					"sections": [
+						{
+							"id": 3,
+							"code": "A5",
+							"time": "Wednesday 1-3pm",
+							"professor": "Dr.Nobody",
+							"location": "Vari Hall A"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": 2,
+			"title": "Political Science",
+			"courses": [
+				{
+					"id": 1,
+					"title": "Introduction to Political Science",
+					"shortcode": "Pol 101",
+					"department": "Political Science"
+				},
+				{
+					"id": 2,
+					"title": "Intermediate Political Science",
+					"shortcode": "Pol 102",
+					"department": "Political Science"
+				},
+				{
+					"id": 3,
+					"title": "Advanced Political Science",
+					"shortcode": "Pol 103",
+					"department": "Political Science"
+				}
+			]
+		},
+		{
+			"id": 3,
+			"title": "Biology",
+			"courses": [
+				{
+					"id": 1,
+					"title": "Introduction to Biology",
+					"shortcode": "Bio 101",
+					"department": "Biology"
+				},
+				{
+					"id": 2,
+					"title": "Intermediate Biology",
+					"shortcode": "Bio 102",
+					"department": "Biology"
+				},
+				{
+					"id": 3,
+					"title": "Advanced Biology",
+					"shortcode": "Bio 103",
+					"department": "Biology"
+				}
+			]
+		}
+	]
+}
