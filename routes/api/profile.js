@@ -37,25 +37,19 @@ router.get("/me", auth, async (req, res) => {
 // @access   Private
 router.post(
 	"/",
-	[
-		auth,
-		[
-			check("status", "Status is required").not().isEmpty(),
-			check("skills", "Skills is required").not().isEmpty(),
-		],
-	],
+	[auth, [check("major", "Major is required").not().isEmpty()]],
 	async (req, res) => {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
 			return res.status(400).json({ errors: errors.array() });
 		}
 		const {
+			courses,
 			company,
 			location,
 			website,
 			bio,
-			skills,
-			status,
+			major,
 			githubusername,
 			youtube,
 			twitter,
@@ -73,11 +67,9 @@ router.post(
 					? normalize(website, { forceHttps: true })
 					: "",
 			bio,
-			skills: Array.isArray(skills)
-				? skills
-				: skills.split(",").map((skill) => " " + skill.trim()),
-			status,
+			major,
 			githubusername,
+			courses,
 		};
 
 		// Build social object and add to profileFields

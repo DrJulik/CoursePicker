@@ -1,3 +1,23 @@
+.x-large {
+	font-size: 4rem;
+	line-height: 1.2;
+	margin-bottom: 1rem;
+}
+.landing {
+	position: relative;
+	height: 100vh;
+}
+.landing-inner {
+	height: 100%;
+	width: 80%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	text-align: center;
+}
+
 // fixing bootstraps shit
 .container {
 	@media (min-width: 1200px) {

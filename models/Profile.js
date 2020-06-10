@@ -5,6 +5,7 @@ const ProfileSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "user",
 	},
+	courses: [],
 	company: {
 		type: String,
 	},
@@ -14,7 +15,7 @@ const ProfileSchema = new mongoose.Schema({
 	location: {
 		type: String,
 	},
-	status: {
+	major: {
 		type: String,
 		required: true,
 	},
