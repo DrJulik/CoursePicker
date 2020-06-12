@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Card, ListGroup, Container, Row, Col, Button } from "react-bootstrap";
 import Course from "./Course";
+import { motion } from "framer-motion";
 
 class CourseList extends Component {
 	state = {
@@ -35,17 +36,22 @@ class CourseList extends Component {
 										<Card.Title>
 											<h3>{title} Courses:</h3>
 										</Card.Title>
-										<ListGroup>
-											{courses.map((course) => {
-												return (
-													<Course
-														key={course.id}
-														{...course}
-														subjectId={subjectId}
-													/>
-												);
-											})}
-										</ListGroup>
+										<motion.div
+											initial={{ opacity: 0 }}
+											animate={{ opacity: 1 }}
+										>
+											<ListGroup>
+												{courses.map((course) => {
+													return (
+														<Course
+															key={course.id}
+															{...course}
+															subjectId={subjectId}
+														/>
+													);
+												})}
+											</ListGroup>
+										</motion.div>
 									</Col>
 								</Row>
 							</Card.Body>

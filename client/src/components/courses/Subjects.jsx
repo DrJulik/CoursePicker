@@ -9,6 +9,7 @@ import {
 	Col,
 	Button,
 } from "react-bootstrap";
+import { motion } from "framer-motion";
 
 const Courses = (props) => {
 	const [subjects, setSubjects] = useState([]);
@@ -36,19 +37,21 @@ const Courses = (props) => {
 							<Row>
 								<Col>
 									<Card.Title>Subjects:</Card.Title>
-									<ListGroup>
-										{subjects.map((subject) => {
-											return (
-												<ListGroupItem
-													key={subject._id}
-													action
-													onClick={openCourses.bind(this, subject._id)}
-												>
-													{subject.title}
-												</ListGroupItem>
-											);
-										})}
-									</ListGroup>
+									<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+										<ListGroup>
+											{subjects.map((subject) => {
+												return (
+													<ListGroupItem
+														key={subject._id}
+														action
+														onClick={openCourses.bind(this, subject._id)}
+													>
+														{subject.title}
+													</ListGroupItem>
+												);
+											})}
+										</ListGroup>
+									</motion.div>
 								</Col>
 							</Row>
 						</Card.Body>

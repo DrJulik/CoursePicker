@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalState";
+import { motion } from "framer-motion";
 
 const Register = () => {
 	const { setAlert, register, auth } = useContext(GlobalContext);
@@ -41,10 +42,12 @@ const Register = () => {
 				justifyContent: "center",
 			}}
 		>
-			<div
+			<motion.div
+				initial={{ opacity: 0, y: -1200 }}
+				animate={{ opacity: 1, y: 0 }}
 				style={{
 					background: "rgba(208, 231, 225, 0.5)",
-					padding: "40px",
+					padding: "100px",
 					boxShadow: "#ccc 1px 1px 4px",
 				}}
 			>
@@ -99,14 +102,14 @@ const Register = () => {
 					</div>
 					<input
 						type="submit"
-						className="btn btn-primary mb-3"
+						className="btn btn-warning mb-3 "
 						value="Register"
 					/>
 				</form>
 				<p className="my-1">
 					Already have an account? <Link to="/login">Sign In</Link>
 				</p>
-			</div>
+			</motion.div>
 		</section>
 	);
 };

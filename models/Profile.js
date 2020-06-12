@@ -45,25 +45,9 @@ const ProfileSchema = new mongoose.Schema({
 			available: {
 				type: String,
 			},
-			sections: [
-				{
-					id: {
-						type: Number,
-					},
-					code: {
-						type: String,
-					},
-					time: {
-						type: String,
-					},
-					professor: {
-						type: String,
-					},
-					location: {
-						type: String,
-					},
-				},
-			],
+			sections: {
+				type: String,
+			},
 		},
 	],
 	social: {

@@ -8,7 +8,7 @@ import CourseList from "./components/courses/CourseList";
 import CoursePage from "./components/courses/CoursePage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { GlobalProvider } from "./context/GlobalState";
-import ManageCourses from "./pages/ManageCourses";
+import ManageCourses from "./components/courses/ManageCourses";
 import Landing from "./pages/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";

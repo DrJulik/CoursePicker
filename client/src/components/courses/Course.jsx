@@ -11,15 +11,6 @@ const Course = ({ id, title, shortcode, department, subjectId, history }) => {
 				<Col>
 					[{shortcode}] {title}
 				</Col>
-				<Col className="text-right">
-					<a
-						href="/"
-						variant="outline-dark"
-						style={{ fontSize: "20px", fontWeight: "bold", color: "green" }}
-					>
-						+
-					</a>
-				</Col>
 			</Row>
 		</ListGroupItem>
 	);

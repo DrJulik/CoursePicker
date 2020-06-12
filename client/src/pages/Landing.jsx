@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Container, ButtonGroup, Button } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
 import { GlobalContext } from "../context/GlobalState";
-
+import { motion } from "framer-motion";
 const Landing = () => {
 	const { auth } = useContext(GlobalContext);
 
@@ -12,7 +12,11 @@ const Landing = () => {
 	return (
 		<Container>
 			<section className="landing">
-				<div className="landing-inner">
+				<motion.div
+					initial={{ opacity: 0, x: -1200 }}
+					animate={{ opacity: 1, x: 0 }}
+					className="landing-inner"
+				>
 					<h1 className="x-large">Course Picker</h1>
 					<p className="lead">
 						Full stack application to choose and manage your courses! (It's
@@ -32,7 +36,7 @@ const Landing = () => {
 							</Button>
 						</Link>
 					</ButtonGroup>
-				</div>
+				</motion.div>
 			</section>
 		</Container>
 	);

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Table, Form, Button } from "react-bootstrap";
 import axios from "axios";
-import AddCourse from "../AddCourse";
+import AddCourse from "./AddCourse";
+import { motion } from "framer-motion";
 
 export class CoursePage extends Component {
 	state = {
@@ -47,7 +48,7 @@ export class CoursePage extends Component {
 		} = this.state;
 
 		return (
-			<Container>
+			<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
 				<Row className="mt-5">
 					<Col>
 						<h4 className="display-4">{title}</h4>
@@ -103,17 +104,17 @@ export class CoursePage extends Component {
 					</Col>
 				</Row>
 				<Row className="flex">
-					<AddCourse course={this.state} available={available} />
 					<Button
-						className="mt-3 mr-3 px-4 ml-auto"
+						className="mt-3 ml-3 px-4 mr-auto"
 						onClick={() => {
 							this.props.history.goBack();
 						}}
 					>
 						Back
 					</Button>
+					<AddCourse course={this.state} available={available} />
 				</Row>
-			</Container>
+			</motion.div>
 		);
 	}
 }

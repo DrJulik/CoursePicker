@@ -2,14 +2,17 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const SubjectSchema = new Schema({
-	id: {
-		type: Number,
-		required: true,
-	},
 	title: {
 		type: String,
 		required: true,
 	},
+	shortcode: {
+		type: String,
+	},
+	department: {
+		type: String,
+	},
+
 	courses: [
 		{
 			id: {

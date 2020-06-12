@@ -1,9 +1,18 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Card, Button, Row, Col, Table, ButtonGroup } from "react-bootstrap";
+import {
+	Card,
+	Button,
+	Row,
+	Col,
+	Table,
+	ButtonGroup,
+	Container,
+} from "react-bootstrap";
 import { GlobalContext } from "../../context/GlobalState";
 import Spinner from "../Spinner";
 import Moment from "react-moment";
+import { motion } from "framer-motion";
 
 const Body = () => {
 	const { getCurrentProfile, auth, profileInfo } = useContext(GlobalContext);
@@ -12,12 +21,13 @@ const Body = () => {
 		getCurrentProfile();
 	}, []);
 
-	return auth.loading && profileInfo.profile === null ? (
+	return auth.loading ? (
 		<Spinner />
 	) : (
 		<>
 			{profileInfo.profile && profileInfo.profile.courses !== null ? (
-				<>
+				<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+					<h1 style={{ marginTop: "3rem" }}>This is your Dashboard!</h1>
 					<Row className="mt-5">
 						<Col>
 							<Card>
@@ -48,14 +58,14 @@ const Body = () => {
 														shortcode,
 														credits,
 														course_director,
-														chosenSection,
+														sections,
 													}) => {
 														return (
 															<tr key={_id}>
 																<td>{title}</td>
 																<td>{shortcode}</td>
 																<td>{credits}</td>
-																<td>{chosenSection}</td>
+																<td>{sections}</td>
 																<td>{course_director}</td>
 															</tr>
 														);
@@ -130,16 +140,29 @@ const Body = () => {
 							</Link>
 						</Col>
 					</Row>
-				</>
+				</motion.div>
 			) : (
-				<>
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{ dalay: 1.5 }}
+					style={{
+						height: "80vh",
+						display: "flex",
+						flexDirection: "column",
+						alignItems: "center",
+						justifyContent: "center",
+					}}
+				>
 					<h2 className="display-4 mt-5">
 						It looks like you don't have a profile set up. Let's get that done!
 					</h2>
 					<Link to="/create_profile">
-						<Button variant="info">Create Profile</Button>
+						<Button variant="info" size="lg">
+							Create Profile
+						</Button>
 					</Link>
-				</>
+				</motion.div>
 			)}
 		</>
 	);

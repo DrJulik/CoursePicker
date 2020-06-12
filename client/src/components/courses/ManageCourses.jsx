@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, Button, Row, Col, Table, ButtonGroup } from "react-bootstrap";
-import { GlobalContext } from "../context/GlobalState";
-import Spinner from "../components/Spinner";
+import { GlobalContext } from "../../context/GlobalState";
+import Spinner from "../Spinner";
+import { motion } from "framer-motion";
 
 const ManageCourses = ({ history }) => {
 	const { deleteCourse, getCurrentProfile, auth, profileInfo } = useContext(
@@ -16,7 +17,7 @@ const ManageCourses = ({ history }) => {
 	return auth.loading && profileInfo.profile === null ? (
 		<Spinner />
 	) : (
-		<>
+		<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
 			{profileInfo.profile && profileInfo.profile.courses !== null && (
 				<Row className="mt-5">
 					<Col>
@@ -95,7 +96,7 @@ const ManageCourses = ({ history }) => {
 					</Col>
 				</Row>
 			)}
-		</>
+		</motion.div>
 	);
 };
 
