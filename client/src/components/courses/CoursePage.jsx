@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Table, Form, Button } from "react-bootstrap";
+import { Row, Col, Table, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import AddCourse from "./AddCourse";
 import { motion } from "framer-motion";

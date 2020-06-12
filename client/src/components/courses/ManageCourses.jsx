@@ -12,7 +12,7 @@ const ManageCourses = ({ history }) => {
 
 	useEffect(() => {
 		getCurrentProfile();
-	}, []);
+	}, [getCurrentProfile]);
 
 	return auth.loading && profileInfo.profile === null ? (
 		<Spinner />

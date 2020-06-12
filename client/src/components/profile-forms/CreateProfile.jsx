@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalState";
 import { Container } from "react-bootstrap";
+import { motion } from "framer-motion";
 
 const CreateProfile = ({ history }) => {
 	const { createProfile, profileInfo } = useContext(GlobalContext);
@@ -50,7 +51,9 @@ const CreateProfile = ({ history }) => {
 					justifyContent: "center",
 				}}
 			>
-				<div
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
 					style={{
 						background: "rgba(208, 231, 225, 0.5)",
 						padding: "100px",
@@ -177,7 +180,7 @@ const CreateProfile = ({ history }) => {
 							Go Back
 						</Link>
 					</form>
-				</div>
+				</motion.div>
 			</Container>
 		</>
 	);
