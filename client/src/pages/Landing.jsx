@@ -12,7 +12,7 @@ const Landing = () => {
 	return (
 		<Container>
 			<section className="landing">
-				<div className="landing-inner my-5">
+				<div className="landing-inner">
 					<h1 className="x-large">Course Picker</h1>
 					<p className="lead">
 						Full stack application to choose and manage your courses! (It's

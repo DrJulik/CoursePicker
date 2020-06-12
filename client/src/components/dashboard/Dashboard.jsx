@@ -3,21 +3,15 @@ import { Link } from "react-router-dom";
 import { Card, Button, Row, Col, Table, ButtonGroup } from "react-bootstrap";
 import { GlobalContext } from "../../context/GlobalState";
 import Spinner from "../Spinner";
-import DashboardActions from "./DashboardActions";
+import Moment from "react-moment";
 
 const Body = () => {
-	const { pickedCourses, getCurrentProfile, auth, profileInfo } = useContext(
-		GlobalContext
-	);
+	const { getCurrentProfile, auth, profileInfo } = useContext(GlobalContext);
 
 	useEffect(() => {
 		getCurrentProfile();
 	}, []);
 
-	// const creditSum = pickedCourses.map((course) => {
-	// 	return course.credits++;
-	// });
-	// console.log(creditSum);
 	return auth.loading && profileInfo.profile === null ? (
 		<Spinner />
 	) : (
@@ -26,15 +20,10 @@ const Body = () => {
 				<>
 					<Row className="mt-5">
 						<Col>
-							<h3>Credits in Progress: 3</h3>
-						</Col>
-					</Row>
-					<Row className="mt-5">
-						<Col>
 							<Card>
 								<Card.Header>My Courses</Card.Header>
 								<Card.Body>
-									{pickedCourses.length === 0 ? (
+									{profileInfo.profile.courses.length === 0 ? (
 										<>
 											<Card.Title>
 												<h3>You are currently not taking any courses!</h3>
@@ -54,7 +43,7 @@ const Body = () => {
 											<tbody>
 												{profileInfo.profile.courses.map(
 													({
-														id,
+														_id,
 														title,
 														shortcode,
 														credits,
@@ -62,7 +51,7 @@ const Body = () => {
 														chosenSection,
 													}) => {
 														return (
-															<tr key={id}>
+															<tr key={_id}>
 																<td>{title}</td>
 																<td>{shortcode}</td>
 																<td>{credits}</td>
@@ -90,7 +79,55 @@ const Body = () => {
 					</Row>
 					<Row className="mt-5">
 						<Col>
-							<DashboardActions />
+							<div>
+								<h3>Credits in Progress: </h3>
+								<h4>
+									<i>3</i>
+								</h4>
+							</div>
+							<div>
+								<h3>Current major: </h3>
+								<h4>
+									<i>{profileInfo.profile.major}</i>
+								</h4>
+							</div>
+							<div>
+								<h3>Location: </h3>
+								<h4>
+									<i>{profileInfo.profile.location}</i>
+								</h4>
+							</div>
+						</Col>
+						<Col>
+							<div>
+								<h3>Date of Birth: </h3>
+								<h4>
+									<i>
+										<Moment format="YYYY/MM/DD">
+											{profileInfo.profile.dob}
+										</Moment>
+									</i>
+								</h4>
+							</div>
+							<div>
+								<h3>Contact Info: </h3>
+								<h4>
+									<i>{profileInfo.profile.contact_info}</i>
+								</h4>
+							</div>
+							<div>
+								<h3>About Me: </h3>
+								<h4>
+									<i>{profileInfo.profile.bio}</i>
+								</h4>
+							</div>
+						</Col>
+						<Col>
+							<Link to="/edit-profile">
+								<Button variant="info" size="lg">
+									Edit Profile
+								</Button>
+							</Link>
 						</Col>
 					</Row>
 				</>

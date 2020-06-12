@@ -23,8 +23,6 @@ const AddCourse = ({ available, course, history }) => {
 						available: course.available,
 					};
 
-					// const req = await axios.post("http://localhost:3000/pickedCourses", newCourse);
-
 					addCourse(newCourse);
 
 					history.push("/");
@@ -50,9 +48,7 @@ const AddCourse = ({ available, course, history }) => {
 						available: course.available,
 					};
 
-					// const req = await axios.post("http://localhost:3000/pickedCourses", newCourse);
-
-					addCourse(newCourse);
+					addCourse(newCourse, history);
 
 					history.push("/");
 				}}

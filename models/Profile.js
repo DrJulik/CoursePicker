@@ -5,13 +5,6 @@ const ProfileSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "user",
 	},
-	courses: [],
-	company: {
-		type: String,
-	},
-	website: {
-		type: String,
-	},
 	location: {
 		type: String,
 	},
@@ -19,79 +12,61 @@ const ProfileSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	skills: {
-		type: [String],
-		required: true,
-	},
 	bio: {
 		type: String,
 	},
-	githubusername: {
+	dob: {
+		type: Date,
+	},
+	contact_info: {
 		type: String,
 	},
-	experience: [
+	courses: [
 		{
 			title: {
 				type: String,
-				required: true,
 			},
-			company: {
-				type: String,
-				required: true,
-			},
-			location: {
+			shortcode: {
 				type: String,
 			},
-			from: {
-				type: Date,
-				required: true,
+			department: {
+				type: String,
 			},
-			to: {
-				type: Date,
+			credits: {
+				type: Number,
 			},
-			current: {
-				type: Boolean,
-				default: false,
+			course_director: {
+				type: String,
 			},
 			description: {
 				type: String,
-			},
-		},
-	],
-	education: [
-		{
-			school: {
-				type: String,
-				required: true,
-			},
-			degree: {
-				type: String,
-				required: true,
-			},
-			fieldofstudy: {
-				type: String,
-				required: true,
-			},
-			from: {
-				type: Date,
-				required: true,
-			},
-			to: {
-				type: Date,
-			},
-			current: {
-				type: Boolean,
 				default: false,
 			},
-			description: {
+			available: {
 				type: String,
 			},
+			sections: [
+				{
+					id: {
+						type: Number,
+					},
+					code: {
+						type: String,
+					},
+					time: {
+						type: String,
+					},
+					professor: {
+						type: String,
+					},
+					location: {
+						type: String,
+					},
+				},
+			],
 		},
 	],
 	social: {
-		youtube: {
-			type: String,
-		},
 		twitter: {
 			type: String,
 		},

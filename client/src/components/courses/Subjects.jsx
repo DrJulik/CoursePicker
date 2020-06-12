@@ -15,14 +15,14 @@ const Courses = (props) => {
 
 	useEffect(() => {
 		async function fetchData() {
-			const res = await axios.get(`http://localhost:3000/subjects`);
+			const res = await axios.get(`/api/subjects`);
 
 			setSubjects(res.data);
 		}
 		fetchData();
 	}, []);
 
-	const openCourses = (id) => props.history.push(`/subjects/${id}`);
+	const openCourses = (_id) => props.history.push(`/subjects/${_id}`);
 
 	return (
 		<Container>
@@ -40,9 +40,9 @@ const Courses = (props) => {
 										{subjects.map((subject) => {
 											return (
 												<ListGroupItem
-													key={subject.id}
+													key={subject._id}
 													action
-													onClick={openCourses.bind(this, subject.id)}
+													onClick={openCourses.bind(this, subject._id)}
 												>
 													{subject.title}
 												</ListGroupItem>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Table, Form, Button } from "react-bootstrap";
 import axios from "axios";
-import AddCourse from "./AddCourse";
+import AddCourse from "../AddCourse";
 
 export class CoursePage extends Component {
 	state = {
@@ -18,7 +18,7 @@ export class CoursePage extends Component {
 
 	async componentDidMount() {
 		const { id, subjectId } = this.props.match.params;
-		const res = await axios.get(`http://localhost:3000/subjects/${subjectId}`);
+		const res = await axios.get(`/api/subjects/${subjectId}`);
 
 		const course = res.data.courses[id - 1];
 

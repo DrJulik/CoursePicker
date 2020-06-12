@@ -2,10 +2,10 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/dashboard/Dashboard";
 import About from "./pages/About";
-import Courses from "./pages/Subjects";
+import Subjects from "./components/courses/Subjects";
 import Wrapper from "./components/Wrapper";
-import CourseList from "./components/CourseList";
-import CoursePage from "./components/CoursePage";
+import CourseList from "./components/courses/CourseList";
+import CoursePage from "./components/courses/CoursePage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { GlobalProvider } from "./context/GlobalState";
 import ManageCourses from "./pages/ManageCourses";
@@ -38,7 +38,7 @@ function App() {
 
 						<Route exact path="/manage_courses" component={ManageCourses} />
 						<Route exact path="/about" component={About} />
-						<Route exact path="/subjects" component={Courses} />
+						<Route exact path="/subjects" component={Subjects} />
 						<Route exact path="/subjects/:id" component={CourseList} />
 						<Route exact path="/:subjectId/:id" component={CoursePage} />
 					</Switch>

@@ -11,7 +11,7 @@ class CourseList extends Component {
 
 	async componentDidMount() {
 		const { id } = this.props.match.params;
-		const res = await axios.get(`http://localhost:3000/subjects/${id}`);
+		const res = await axios.get(`/api/subjects/${id}`);
 
 		const subject = res.data;
 

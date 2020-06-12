@@ -9,18 +9,16 @@ const EditProfile = ({ history }) => {
 		getCurrentProfile,
 	} = useContext(GlobalContext);
 	const [formData, setFormData] = useState({
-		company: "",
-		website: "",
+		dob: "",
+		contact_info: "",
 		location: "",
 		major: "",
-		skills: "",
-		githubusername: "",
 		bio: "",
 		twitter: "",
 		facebook: "",
 		linkedin: "",
-		youtube: "",
 		instagram: "",
+		courses: [],
 	});
 
 	const [displaySocialInputs, toggleSocialInputs] = useState(false);
@@ -29,35 +27,31 @@ const EditProfile = ({ history }) => {
 		getCurrentProfile();
 
 		setFormData({
-			company: loading || !profile.company ? "" : profile.company,
-			website: loading || !profile.website ? "" : profile.website,
 			location: loading || !profile.location ? "" : profile.location,
+			courses: loading || !profile.courses ? "" : profile.courses,
 			major: loading || !profile.major ? "" : profile.major,
-			skills: loading || !profile.skills ? "" : profile.skills.join(","),
-			githubusername:
-				loading || !profile.githubusername ? "" : profile.githubusername,
+			dob: loading || !profile.dob ? "" : profile.dob,
+			contact_info:
+				loading || !profile.contact_info ? "" : profile.contact_info,
 			bio: loading || !profile.bio ? "" : profile.bio,
 			twitter: loading || !profile.social ? "" : profile.social.twitter,
 			facebook: loading || !profile.social ? "" : profile.social.facebook,
 			linkedin: loading || !profile.social ? "" : profile.social.linkedin,
-			youtube: loading || !profile.social ? "" : profile.social.youtube,
+
 			instagram: loading || !profile.social ? "" : profile.social.instagram,
 		});
 	}, [loading]);
 
 	const {
-		company,
-		website,
 		location,
-		major,
-		skills,
-		githubusername,
 		bio,
+		major,
+		dob,
+		contact_info,
 		twitter,
-		facebook,
-		linkedin,
-		youtube,
 		instagram,
+		linkedin,
+		facebook,
 	} = formData;
 
 	const onChange = (e) =>
@@ -78,41 +72,13 @@ const EditProfile = ({ history }) => {
 				<div className="form-group">
 					<select name="major" value={major} onChange={onChange}>
 						<option>* Select You Current Major</option>
-						<option value="Developer">Developer</option>
-						<option value="Junior Developer">Junior Developer</option>
-						<option value="Senior Developer">Senior Developer</option>
-						<option value="Manager">Manager</option>
-						<option value="Student or Learning">Student or Learning</option>
-						<option value="Instructor">Instructor or Teacher</option>
-						<option value="Intern">Intern</option>
-						<option value="Other">Other</option>
+						<option value="Criminology">Criminology</option>
+						<option value="Biology">Biology</option>
+						<option value="Political Science">Political Science</option>
+						<option value="Undeclared">Undeclared</option>
 					</select>
 					<small className="form-text">
 						Give us an idea of where you are at in your career
-					</small>
-				</div>
-				<div className="form-group">
-					<input
-						type="text"
-						placeholder="Company"
-						name="company"
-						value={company}
-						onChange={onChange}
-					/>
-					<small className="form-text">
-						Could be your own company or one you work for
-					</small>
-				</div>
-				<div className="form-group">
-					<input
-						type="text"
-						placeholder="Website"
-						name="website"
-						value={website}
-						onChange={onChange}
-					/>
-					<small className="form-text">
-						Could be your own or a company website
 					</small>
 				</div>
 				<div className="form-group">
@@ -124,33 +90,12 @@ const EditProfile = ({ history }) => {
 						onChange={onChange}
 					/>
 					<small className="form-text">
-						City & state suggested (eg. Boston, MA)
+						City & state/province suggested (eg. Toronto, ON)
 					</small>
 				</div>
 				<div className="form-group">
-					<input
-						type="text"
-						placeholder="* Skills"
-						name="skills"
-						value={skills}
-						onChange={onChange}
-					/>
-					<small className="form-text">
-						Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
-					</small>
-				</div>
-				<div className="form-group">
-					<input
-						type="text"
-						placeholder="Github Username"
-						name="githubusername"
-						value={githubusername}
-						onChange={onChange}
-					/>
-					<small className="form-text">
-						If you want your latest repos and a Github link, include your
-						username
-					</small>
+					<h4>Date of birth</h4>
+					<input type="date" name="dob" value={dob} onChange={onChange} />
 				</div>
 				<div className="form-group">
 					<textarea
@@ -160,6 +105,17 @@ const EditProfile = ({ history }) => {
 						onChange={onChange}
 					/>
 					<small className="form-text">Tell us a little about yourself</small>
+				</div>
+				<div className="form-group">
+					<textarea
+						placeholder="Contact Info"
+						name="contact_info"
+						value={contact_info}
+						onChange={onChange}
+					/>
+					<small className="form-text">
+						Provide your preferred method of communication
+					</small>
 				</div>
 
 				<div className="my-2">
@@ -193,17 +149,6 @@ const EditProfile = ({ history }) => {
 								placeholder="Facebook URL"
 								name="facebook"
 								value={facebook}
-								onChange={onChange}
-							/>
-						</div>
-
-						<div className="form-group social-input">
-							<i className="fab fa-youtube fa-2x" />
-							<input
-								type="text"
-								placeholder="YouTube URL"
-								name="youtube"
-								value={youtube}
 								onChange={onChange}
 							/>
 						</div>

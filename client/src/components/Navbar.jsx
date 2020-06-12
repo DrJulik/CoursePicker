@@ -43,9 +43,11 @@ const NavBar = () => {
 	);
 
 	return (
-		<Navbar bg="light" expand="lg">
+		<Navbar bg="light" expand="lg" className=" mb-3">
 			<Container>
-				<h5 className="display-4">Hello, {auth.user && auth.user.name}</h5>
+				<h5 className="display-5">
+					{auth.user ? ("Hello", auth.user.name) : "Course Picker"}
+				</h5>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					{!loading && <>{isAuthenticated ? authLinks : guestLinks}</>}

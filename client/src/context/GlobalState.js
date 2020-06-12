@@ -43,20 +43,6 @@ export const GlobalProvider = ({ children }) => {
 
 	// ACTIONS
 
-	// COURSE RELATED ACTIONS
-	function deleteCourse(id) {
-		dispatch({
-			type: "DELETE_COURSE",
-			payload: id,
-		});
-	}
-	function addCourse(newCourse) {
-		dispatch({
-			type: "ADD_COURSE",
-			payload: newCourse,
-		});
-	}
-
 	// ALERTS
 	function setAlert(msg, alertType, timeout = 3000) {
 		const id = uuidv4();
@@ -124,7 +110,6 @@ export const GlobalProvider = ({ children }) => {
 			},
 		};
 		const body = JSON.stringify({ email, password });
-		console.log(body);
 
 		try {
 			const res = await Axios.post("/api/auth", body, config);
@@ -209,6 +194,50 @@ export const GlobalProvider = ({ children }) => {
 		}
 	}
 
+	// add course
+	async function addCourse(newCourse, config) {
+		try {
+			const config = {
+				headers: {
+					"Content-Type": "application/json",
+				},
+			};
+
+			const res = await Axios.put("/api/profile/courses", newCourse, config);
+			dispatch({
+				type: "ADD_COURSE",
+				payload: res.data,
+			});
+			setAlert("Course added!", "success");
+		} catch (err) {
+			console.log(err);
+			// dispatch({
+			// 	type: "PROFILE_ERROR",
+			// 	payload: {
+			// 		msg: err.response.statusText,
+			// 		status: err.response.status,
+			// 	},
+			// });
+		}
+	}
+
+	// delete course
+
+	async function deleteCourse(id) {
+		try {
+			const res = await Axios.delete(`/api/profile/courses/${id}`);
+
+			dispatch({
+				type: "DELETE_PROFILE",
+				payload: res.data,
+			});
+
+			setAlert("Course Removed", "success");
+		} catch (err) {
+			console.log(err);
+		}
+	}
+
 	return (
 		<GlobalContext.Provider
 			value={{
@@ -216,8 +245,6 @@ export const GlobalProvider = ({ children }) => {
 				profileInfo: state.profileInfo,
 				pickedCourses: state.pickedCourses,
 				alerts: state.alerts,
-				deleteCourse,
-				addCourse,
 				setAlert,
 				register,
 				loadUser,
@@ -225,6 +252,8 @@ export const GlobalProvider = ({ children }) => {
 				logout,
 				getCurrentProfile,
 				createProfile,
+				addCourse,
+				deleteCourse,
 			}}
 		>
 			{children}
