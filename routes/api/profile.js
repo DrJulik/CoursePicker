@@ -5,7 +5,7 @@ const router = express.Router();
 const auth = require("../../middleware/auth");
 const { check, validationResult } = require("express-validator");
 // bring in normalize to give us a proper url, regardless of what user entered
-const normalize = require("normalize-url");
+// const normalize = require("normalize-url");
 const checkObjectId = require("../../middleware/checkObjectId");
 
 const Profile = require("../../models/Profile");
@@ -69,10 +69,10 @@ router.post(
 		// Build social object and add to profileFields
 		const socialfields = { twitter, instagram, linkedin, facebook };
 
-		for (const [key, value] of Object.entries(socialfields)) {
-			if (value && value.length > 0)
-				socialfields[key] = normalize(value, { forceHttps: true });
-		}
+		// for (const [key, value] of Object.entries(socialfields)) {
+		// 	if (value && value.length > 0)
+		// 		socialfields[key] = normalize(value, { forceHttps: true });
+		// }
 		profileFields.social = socialfields;
 
 		try {
